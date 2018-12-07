@@ -802,8 +802,10 @@ void Tracking::UpdateLastFrame()
 {
     // Update pose according to reference keyframe
     KeyFrame* pRef = mLastFrame.mpReferenceKF;
+    // last frame pose according to referenceKF
     cv::Mat Tlr = mlRelativeFramePoses.back();
 
+    // last frame pose on world coordinate
     mLastFrame.SetPose(Tlr*pRef->GetPose());
 
     if(mnLastKeyFrameId==mLastFrame.mnId || mSensor==System::MONOCULAR || !mbOnlyTracking)

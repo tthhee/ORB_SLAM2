@@ -263,6 +263,7 @@ void Frame::UpdatePoseMatrices()
     mRcw = mTcw.rowRange(0,3).colRange(0,3);
     mRwc = mRcw.t();
     mtcw = mTcw.rowRange(0,3).col(3);
+    // matrix for transformation from world coordinate to camera coordinate
     mOw = -mRcw.t()*mtcw;
 }
 

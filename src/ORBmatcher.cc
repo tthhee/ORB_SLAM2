@@ -1335,9 +1335,12 @@ int ORBmatcher::SearchByProjection(Frame &CurrentFrame, const Frame &LastFrame, 
         rotHist[i].reserve(500);
     const float factor = 1.0f/HISTO_LENGTH;
 
+    // select rotation matrix
     const cv::Mat Rcw = CurrentFrame.mTcw.rowRange(0,3).colRange(0,3);
+    // select translation vector
     const cv::Mat tcw = CurrentFrame.mTcw.rowRange(0,3).col(3);
 
+    // transformation from world coordinate to camera coordiante
     const cv::Mat twc = -Rcw.t()*tcw;
 
     const cv::Mat Rlw = LastFrame.mTcw.rowRange(0,3).colRange(0,3);
